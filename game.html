@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/a.css">
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+
+    <title>Covers Sambimulyo</title>
+</head>
+<body>
+    <body class="mt-5">
+        <nav class="navbar my-nav fixed-top navbar-expand-lg navbar-dark bg-dark ">
+            <div class="container">
+                <a class="navlog" href="index.html"><img src="images/logocs.png" width="50px" height="50px"></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                    </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="index.html">UKM</a>
+                <a class="nav-item nav-link" href="informasidesa.html">Informasi Desa</a>
+                <a class="nav-item nav-link" href="aboutme.html">Tentang Kami</a>
+                <a class="nav-item nav-link" href="links.html">Links</a>
+            </div>
+            </div>
+            </div>
+        </nav> <br>
+
+    
+    <section>
+        <canvas width="400" height="400" id="canv">
+        </canvas>
+        <script>
+         var y = 200;
+         var x = 200;
+         var vy = 0;
+         var kecepatanpipa = 2;
+         var menang = true;
+       window.addEventListener('click',kontrolmouse,false);
+       
+         //MEMBUAT PIPA
+          //buat array pipa[x][ketinggian]
+          pipa = [
+          [400, Math.floor(Math.random() * 150) + 50, 0], //antara 50-200
+          [500, Math.floor(Math.random() * 150) + 50, 0],
+          [600, Math.floor(Math.random() * 150) + 50, 0],
+          [700, Math.floor(Math.random() * 150) + 50, 0],
+          [800, Math.floor(Math.random() * 150) + 50, 0]
+          ];
+       
+         canv=document.getElementById("canv");
+         ctx=canv.getContext("2d");
+         setInterval(game, 1000/30);
+       
+         function game(){
+          ctx.clearRect(0,0,canv.width,canv.height); //menghapus semua isi canvas
+          vy += 1;
+          y += vy;
+       
+          var image = new Image();
+          image.src="images/burung.jpg";
+          ctx.drawImage(image, x, y,40,40);
+       
+          for(i = 0;i<5;i++)
+          {
+           //MEMBUAT PIPA
+           ctx.fillStyle="grey";
+           ctx.fillRect(pipa[i][0],0,50,pipa[i][1]); //pipa atas
+           ctx.fillStyle="grey";
+           ctx.fillRect(pipa[i][0],pipa[i][1] + 150, 50, 250 - pipa[i][1]); //pipa bawah
+       
+           //cek jika burung terkena pipa
+           if(pipa[i][0] < 240 && pipa[i][0] > 160 && (pipa[i][1] > y || pipa[i][1] + 150 <= y + 30))
+           {
+            alert("Burung terkena pipa.. ohhh ! Anda kalah.. !");
+           }
+       
+           //MENYETTING KOORDINAT X PADA PIPA
+           if(pipa[i][0] > -50) //jika masih terlihat di map
+           {
+            pipa[i][0] -= kecepatanpipa;
+           }
+           else if(pipa[i][0] == -50)  //jika sudah tidka terlihat, maka pindah pipa ke kanan
+           {
+            //pindah posisi
+            pipa[i][0] = 450;
+           }
+          }
+       
+          if(y > 400)
+          {
+           vy = -10
+          }
+         }
+       
+         function kontrolmouse(evt) //pemilihan menu
+         {
+          vy = -10;
+         }
+        </script>
+    </section> 
+
+    <section>
+                <div class="barang">
+                    <h2>Jual Pulsa All Operator dan Listrik</h2>
+             
+                    <div class="list-produk">
+                        <img src="images/produk/jual_pulsa_elektrik_murah.jpg" alt="Greenlight">
+             
+                        <h4>Jual Pulsa ALL Operator</h4>
+                        <h6>Rp 10.000 - Rp 100.000 </h6>
+              
+                        <a class="tombol tombol-beli" href="jualpulsa.html">Lihat</a>
+                    </div>
+
+                    <div class="list-produk">
+                        <img src="images/produk/607794_b0bf4264-760c-49e5-b200-a53c7f9dda1f.png" alt="Greenlight">
+             
+                        <h4>Jual Pulsa Listrik </h4>
+                        <h6>Rp 100.000 - Rp 1000.000 </h6>
+              
+                        <a class="tombol tombol-beli" href="jualpulsa.html">Lihat</a>
+                    </div>
+
+        </div>
+        </div>
+    </section>
+
+
+
+    <section>
+      <div class="footer blue">
+  <!-- Footer -->
+  <footer class="page-footer font-small blue pt-4">
+  
+          <!-- Footer Links -->
+          <div class="container-fluid text-center text-md-left">
+        
+            <!-- Grid row -->
+            <div class="row">
+        
+              <!-- Grid column -->
+              <div class="col-md-6 mt-md-0 mt-3">
+        
+                <!-- Content -->
+                <h5 class="text-uppercase">COVERS SAMBIMULYO</h5>
+                <p class="text-info">Informasi dan Dokumentasi Seputar Desa Sambimulyo</p>
+        
+              </div>
+              <!-- Grid column -->
+        
+              <hr class="clearfix w-100 d-md-none pb-3">
+        
+              <!-- Grid column -->
+              <div class="col-md-3 mb-md-0 mb-3">
+        
+                <!-- Links -->
+                <h5 class="text-uppercase">Links</h5>
+        
+                <ul class="list-unstyled">
+                  <li>
+                    <a href="https://instagram.com/covers_sambimulyo">INSTAGRAM</a>
+                  </li>
+                </ul>
+        
+              </div>
+              <!-- Grid column -->
+        
+              <!-- Grid column -->
+              <div class="col-md-3 mb-md-0 mb-3">
+        
+              </div>
+              <!-- Grid column -->
+        
+            </div>
+            <!-- Grid row -->
+        
+          </div>
+          <!-- Footer Links -->
+        
+          <!-- Copyright -->
+          <div class="footer-copyright text-center py-3">©2020 Copyright:
+            <a href="https://instagram.com/covers_sambimulyo"> CS</a>
+          </div>
+          <!-- Copyright -->
+        
+        </footer>
+        <!-- Footer -->
+  </section>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
